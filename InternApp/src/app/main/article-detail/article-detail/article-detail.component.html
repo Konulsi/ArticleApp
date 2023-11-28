@@ -1,0 +1,27 @@
+<div class="container p-5" style="height: 84vh">
+  <mat-card class="example-card my-5" style="padding: 35px">
+    <mat-card-header style="justify-content: space-between">
+      <mat-card-title> {{ article?.title }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div
+        class="content-header my-2"
+        style="display: flex; justify-content: start; align-items: center"
+      >
+        <img
+          style="height: 50px; border-radius: 50%"
+          mat-card-image
+          [src]="article?.author?.image"
+        />
+        <h3 style="font-size: 20px; margin-left: 20px">
+          {{ article?.author?.username }}
+        </h3>
+      </div>
+
+      <p>
+        {{ article?.description }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>

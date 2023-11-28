@@ -1,0 +1,87 @@
+<div
+  style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 84.3vh;
+  "
+>
+  <mat-card style="min-width: 30%">
+    <mat-card-content>
+      <mat-card-title>Register</mat-card-title>
+
+      <form
+        style="display: flex; flex-direction: column"
+        [formGroup]="registerForm"
+      >
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            placeholder="Enter your username"
+            formControlName="username"
+          />
+          <mat-error *ngIf="registerForm.get('userName')?.hasError('required')">
+            Username required!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Enter your email"
+            formControlName="email"
+          />
+          <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+            Email required!
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('email')?.hasError('email')">
+            Please enter the email in the correct format!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="Enter your password"
+            formControlName="password"
+          />
+          <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
+            Password required!
+          </mat-error>
+          <mat-error
+            *ngIf="registerForm.get('password')?.hasError('minlength')"
+          >
+            Please enter the password in the correct format!
+          </mat-error>
+        </mat-form-field>
+
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <a
+            style="text-decoration: none; color: black"
+            routerLink="/auth/login"
+            >Login</a
+          >
+          <button
+            type="submit"
+            [disabled]="registerForm.invalid"
+            mat-raised-button
+            color="primary"
+            (click)="register()"
+          >
+            Register
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

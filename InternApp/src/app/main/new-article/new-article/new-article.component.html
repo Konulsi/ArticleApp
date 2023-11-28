@@ -1,0 +1,82 @@
+<div
+  style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 84.3vh;
+  "
+>
+  <mat-card style="min-width: 30%">
+    <mat-card-content>
+      <mat-card-title>Create New Article</mat-card-title>
+
+      <form
+        style="display: flex; flex-direction: column"
+        [formGroup]="newArticleForm"
+      >
+        <mat-form-field>
+          <mat-label>Title</mat-label>
+          <input
+            matInput
+            placeholder="Enter the title of the article"
+            formControlName="title"
+          />
+          <mat-error *ngIf="newArticleForm.get('title')?.hasError('required')">
+            Title required!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Tags</mat-label>
+          <input
+            matInput
+            placeholder="Enter the tag of the article"
+            formControlName="tag"
+          />
+          <mat-error *ngIf="newArticleForm.get('tag')?.hasError('required')">
+            Tag required!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <input
+            matInput
+            placeholder="Enter the description of the article"
+            formControlName="description"
+          />
+          <mat-error
+            *ngIf="newArticleForm.get('description')?.hasError('required')"
+          >
+            Description required!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Body</mat-label>
+          <input
+            matInput
+            placeholder="Enter the body of the article"
+            formControlName="body"
+          />
+          <mat-error *ngIf="newArticleForm.get('body')?.hasError('required')">
+            Body required!
+          </mat-error>
+        </mat-form-field>
+
+        <button
+          [disabled]="newArticleForm.invalid"
+          mat-raised-button
+          type="submit"
+          color="primary"
+          (click)="create()"
+        >
+          Save
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+<!-- <button mat-raised-button (click)="openDialog('0ms', '0ms')">
+  Open dialog without animation
+</button> -->

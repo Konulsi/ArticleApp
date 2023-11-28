@@ -1,0 +1,35 @@
+<mat-card class="example-card my-5">
+  <mat-card-header style="justify-content: space-between">
+    <mat-card-title> {{ article?.title }}</mat-card-title>
+    <div class="info-icon" style="margin: 8px; font-size: 25px">
+      <a
+        style="color: #fbd807d4"
+        [routerLink]="['/', 'articledetail', article?.slug]"
+        ><i class="fa-solid fa-circle-info"></i
+      ></a>
+      <a style="color: red"
+        ><i class="fa-solid fa-trash-can" (click)="deleteArticle()"></i
+      ></a>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div
+      class="content-header my-2"
+      style="display: flex; justify-content: start; align-items: center"
+    >
+      <img
+        style="height: 50px; border-radius: 50%"
+        mat-card-image
+        [src]="article?.author?.image"
+      />
+      <h3 style="font-size: 20px; margin-left: 20px">
+        {{ article?.author?.username }}
+      </h3>
+    </div>
+
+    <p>
+      {{ article?.description }}
+    </p>
+  </mat-card-content>
+</mat-card>
