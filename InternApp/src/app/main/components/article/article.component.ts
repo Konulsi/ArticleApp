@@ -24,16 +24,14 @@ export class ArticleComponent implements OnInit {
 
   constructor(private articleService: ArticleService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getArticlesList();
+  }
 
   deleteArticle() {
     this.articleService.deleteArticle(this.article.slug).subscribe((data) => {
       this.getArticlesList();
     });
-  }
-
-  editPost() {
-    this.router.navigate(['editarticle', this.article.slug]);
   }
 
   getArticlesList() {

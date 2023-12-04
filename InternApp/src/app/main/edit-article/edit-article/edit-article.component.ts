@@ -7,7 +7,11 @@ import {
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ArticleEditDto, article } from 'src/app/interfaces/article';
+import {
+  ArticleEditDto,
+  article,
+  articleDto,
+} from 'src/app/interfaces/article';
 import { ArticleService } from 'src/app/services/articles.service';
 import { ArticleEditDialogComponent } from '../article-edit-dialog/article-edit-dialog.component';
 
@@ -19,8 +23,10 @@ import { ArticleEditDialogComponent } from '../article-edit-dialog/article-edit-
 export class EditArticleComponent implements OnInit {
   // editArticleForm!: FormGroup;
   articles!: article[];
+  article!: articleDto;
+
   isEdit = false;
-  slug!: article;
+  slug!: string;
 
   title: string = '';
   body: string = '';
@@ -35,11 +41,16 @@ export class EditArticleComponent implements OnInit {
   });
 
   constructor(
-    private router: Router,
+    private activatedRoute: ActivatedRoute, //params ile url e nese elave etdikde
+    private route: Router,
     private articleService: ArticleService,
     public dialog: MatDialog
-  ) {
-    if (this.editArticleForm.valid)
+  ) {}
+
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe(({ slug }) => {
+      this.slug = slug;
+
       this.articleService
         .getArticleBySlug(this.slug)
         .subscribe(({ article }) => {
@@ -52,20 +63,17 @@ export class EditArticleComponent implements OnInit {
             tag: article.tagList.join(','),
           });
         });
+    });
   }
 
-  ngOnInit(): void {}
-
-  editArticleBtn() {
+  editArticleBtn(slug: string) {
     const formData = {
-      // article: this.editArticleForm.value,
-      title: this.editArticleForm.get('title')?.value,
-      body: this.editArticleForm.get('body')?.value,
-      description: this.editArticleForm.get('description')?.value,
-      tag: this.editArticleForm.get('tag')?.value,
-    };
+      article: this.editArticleForm.value,
+    } as Partial<ArticleEditDto>;
 
-    this.articleService.putArticle(this.slug, formData).subscribe((res) => {});
+    this.articleService.putArticle(this.slug, formData).subscribe(() => {
+      this.route.navigate(['/']);
+    });
   }
 
   openDialog() {
@@ -76,8 +84,8 @@ export class EditArticleComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         //dialogun close-unda result true -dirse
-        this.editArticleBtn();
-        this.router.navigate(['/']);
+        this.editArticleBtn(result.article);
+        this.route.navigate(['/']);
       }
     });
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NewArticle, article } from 'src/app/interfaces/article';
@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './new-article.component.html',
   styleUrls: ['./new-article.component.sass'],
 })
-export class NewArticleComponent {
+export class NewArticleComponent implements OnInit {
   newArticleForm!: FormGroup;
   articles!: article[];
   constructor(
@@ -26,6 +26,10 @@ export class NewArticleComponent {
       tag: ['', Validators.required],
       description: ['', Validators.required],
     });
+  }
+
+  ngOnInit(): void {
+    this.getArticlesList();
   }
 
   create() {
@@ -51,11 +55,11 @@ export class NewArticleComponent {
     });
   }
 
-  // getArticlesList() {
-  //   this.articleService.getArticles().subscribe((result) => {
-  //     this.articles = result.articles;
-  //   });
-  // }
+  getArticlesList() {
+    this.articleService.getArticles().subscribe((result) => {
+      this.articles = result.articles;
+    });
+  }
 
   ///
 

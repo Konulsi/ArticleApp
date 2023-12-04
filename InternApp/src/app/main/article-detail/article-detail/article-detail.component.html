@@ -12,16 +12,22 @@
           justify-content: space-evenly;
         "
       >
-        <button
+        <a
+          matTooltip="Article edit"
+          aria-label="Button that displays a tooltip when focused or hovered over"
           style="outline: none; border: none; color: green"
-          [disabled]="disabled"
-          (click)="editPost()"
+          [routerLink]="['/', 'editarticle', article?.slug]"
           class="follow"
         >
           <i class="fa-solid fa-pen-to-square"></i>
-        </button>
+        </a>
         <button style="outline: none; border: none; color: red">
-          <i class="fa-solid fa-trash-can" (click)="deleteArticle()"></i>
+          <i
+            matTooltip="Article delete"
+            aria-label="Button that displays a tooltip when focused or hovered over"
+            class="fa-solid fa-trash-can"
+            (click)="deleteArticle()"
+          ></i>
         </button>
       </div>
     </mat-card-header>

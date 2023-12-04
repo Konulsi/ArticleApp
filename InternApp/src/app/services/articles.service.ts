@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   ArticleDto,
+  ArticleEditDto,
   Articles,
   NewArticle,
   article,
@@ -22,7 +23,7 @@ export class ArticleService {
     return this.http.get<Articles>(this.baseUrl + Urls.ARTICLE);
   }
 
-  getArticleBySlug(slug: article) {
+  getArticleBySlug(slug: string) {
     return this.http.get<articleDto>(this.baseUrl + Urls.ARTICLE + '/' + slug);
   }
 
@@ -34,7 +35,7 @@ export class ArticleService {
     return this.http.delete(this.baseUrl + Urls.ARTICLE + '/' + slug);
   }
 
-  putArticle(slug: article, dto: any) {
+  putArticle(slug: string, dto: Partial<ArticleEditDto>) {
     return this.http.put(this.baseUrl + Urls.ARTICLE + '/' + slug, dto);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { article } from 'src/app/interfaces/article';
 import { ArticleService } from 'src/app/services/articles.service';
 
@@ -14,21 +14,26 @@ export class ArticleDetailComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
-    private route: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(({ slug }) => {
+    this.activatedRoute.params.subscribe(({ slug }) => {
       this.getArticle(slug);
     });
   }
 
-  getArticle(slug: article) {
+  getArticle(slug: string) {
     this.articleService.getArticleBySlug(slug).subscribe((articleData) => {
       this.article = articleData.article;
     });
   }
   editPost() {}
 
-  deleteArticle() {}
+  deleteArticle() {
+    this.articleService.deleteArticle(this.article.slug).subscribe((data) => {
+      this.router.navigate(['/']);
+    });
+  }
 }
