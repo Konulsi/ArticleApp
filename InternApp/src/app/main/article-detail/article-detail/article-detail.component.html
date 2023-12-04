@@ -15,13 +15,20 @@
         <a
           matTooltip="Article edit"
           aria-label="Button that displays a tooltip when focused or hovered over"
-          style="outline: none; border: none; color: green"
+          style="outline: none; border: none; color: #70cbd3"
           [routerLink]="['/', 'editarticle', article?.slug]"
           class="follow"
         >
           <i class="fa-solid fa-pen-to-square"></i>
         </a>
-        <button style="outline: none; border: none; color: red">
+        <button
+          style="
+            outline: none;
+            border: none;
+            color: #ff0000c2;
+            background-color: transparent;
+          "
+        >
           <i
             matTooltip="Article delete"
             aria-label="Button that displays a tooltip when focused or hovered over"
