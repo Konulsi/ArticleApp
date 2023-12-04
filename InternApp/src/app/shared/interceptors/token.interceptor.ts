@@ -14,10 +14,7 @@ export class TokenInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('authToken');
-
-    console.log('here');
     if (token) {
-      console.log('here2');
       const header = req.headers.append('Authorization', 'Token ' + token);
       const newReq = req.clone({ headers: header });
       return next.handle(newReq);

@@ -2,6 +2,28 @@
   <mat-card class="example-card my-5" style="padding: 35px">
     <mat-card-header style="justify-content: space-between">
       <mat-card-title> {{ article?.title }}</mat-card-title>
+      <div
+        class="info-icon"
+        style="
+          margin: 8px;
+          font-size: 25px;
+          width: 110px;
+          display: flex;
+          justify-content: space-evenly;
+        "
+      >
+        <button
+          style="outline: none; border: none; color: green"
+          [disabled]="disabled"
+          (click)="editPost()"
+          class="follow"
+        >
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button style="outline: none; border: none; color: red">
+          <i class="fa-solid fa-trash-can" (click)="deleteArticle()"></i>
+        </button>
+      </div>
     </mat-card-header>
 
     <mat-card-content>

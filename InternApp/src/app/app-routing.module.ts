@@ -27,6 +27,13 @@ const routes: Routes = [
         (m) => m.ArticleDetailModule
       ),
   },
+  {
+    path: 'editarticle',
+    loadChildren: () =>
+      import('./main/edit-article/edit-article.module').then(
+        (m) => m.EditArticleModule
+      ),
+  },
   // { path: '**', component: NotFoundComponent },
 ];
 

@@ -8,11 +8,10 @@
 >
   <mat-card style="min-width: 30%">
     <mat-card-content>
-      <mat-card-title>Create New Article</mat-card-title>
-
+      <mat-card-title>Edit Article</mat-card-title>
       <form
+        [formGroup]="editArticleForm"
         style="display: flex; flex-direction: column"
-        [formGroup]="newArticleForm"
       >
         <mat-form-field>
           <mat-label>Title</mat-label>
@@ -20,8 +19,9 @@
             matInput
             placeholder="Enter the title of the article"
             formControlName="title"
+            name="title"
           />
-          <mat-error *ngIf="newArticleForm.get('title')?.hasError('required')">
+          <mat-error *ngIf="editArticleForm.get('title')?.hasError('required')">
             Title required!
           </mat-error>
         </mat-form-field>
@@ -32,8 +32,9 @@
             matInput
             placeholder="Enter the tag of the article"
             formControlName="tag"
+            name="tag"
           />
-          <mat-error *ngIf="newArticleForm.get('tag')?.hasError('required')">
+          <mat-error *ngIf="editArticleForm.get('tag')?.hasError('required')">
             Tag required!
           </mat-error>
         </mat-form-field>
@@ -44,9 +45,10 @@
             matInput
             placeholder="Enter the description of the article"
             formControlName="description"
+            name="description"
           />
           <mat-error
-            *ngIf="newArticleForm.get('description')?.hasError('required')"
+            *ngIf="editArticleForm.get('description')?.hasError('required')"
           >
             Description required!
           </mat-error>
@@ -54,24 +56,26 @@
 
         <mat-form-field>
           <mat-label>Body</mat-label>
-          <input
+          <textarea
             matInput
             placeholder="Enter the body of the article"
             formControlName="body"
-          />
-          <mat-error *ngIf="newArticleForm.get('body')?.hasError('required')">
+            name="body"
+          >
+          </textarea>
+          <mat-error *ngIf="editArticleForm.get('body')?.hasError('required')">
             Body required!
           </mat-error>
         </mat-form-field>
 
         <button
-          [disabled]="newArticleForm.invalid"
+          [disabled]="editArticleForm.invalid"
           mat-raised-button
           (click)="openDialog()"
           type="submit"
           color="primary"
         >
-          Save
+          Update
         </button>
       </form>
     </mat-card-content>

@@ -69,3 +69,21 @@ export interface NewArticleResponse {
     };
   };
 }
+
+export interface ArticleDto {
+  article: {
+    body: string;
+    description: string;
+    tag: string;
+    title: string;
+  };
+}
+
+export interface ArticleEditDto {
+  article: {
+    body: string;
+    description: string;
+    tag: string;
+    title: string;
+  };
+}

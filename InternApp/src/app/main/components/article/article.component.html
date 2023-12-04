@@ -1,15 +1,32 @@
 <mat-card class="example-card my-5">
   <mat-card-header style="justify-content: space-between">
     <mat-card-title> {{ article?.title }}</mat-card-title>
-    <div class="info-icon" style="margin: 8px; font-size: 25px">
+    <div
+      class="info-icon"
+      style="
+        margin: 8px;
+        font-size: 25px;
+        width: 110px;
+        display: flex;
+        justify-content: space-evenly;
+      "
+    >
       <a
         style="color: #fbd807d4"
         [routerLink]="['/', 'articledetail', article?.slug]"
         ><i class="fa-solid fa-circle-info"></i
       ></a>
-      <a style="color: red"
-        ><i class="fa-solid fa-trash-can" (click)="deleteArticle()"></i
-      ></a>
+      <button
+        style="outline: none; border: none; color: green"
+        [disabled]="disabled"
+        (click)="editPost()"
+        class="follow"
+      >
+        <i class="fa-solid fa-pen-to-square"></i>
+      </button>
+      <button style="outline: none; border: none; color: red">
+        <i class="fa-solid fa-trash-can" (click)="deleteArticle()"></i>
+      </button>
     </div>
   </mat-card-header>
 

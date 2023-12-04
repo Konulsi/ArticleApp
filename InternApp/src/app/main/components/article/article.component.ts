@@ -11,6 +11,8 @@ import { ArticleService } from 'src/app/services/articles.service';
 })
 export class ArticleComponent implements OnInit {
   @Input() article!: article;
+  articles!: article[];
+
   //ya article object kimi chagiririq ya da hisseki shekilde
   // @Input() title: string = '';
   // @Input() authorImage: string = '';
@@ -18,17 +20,25 @@ export class ArticleComponent implements OnInit {
   // @Input() authorUsername: string = '';
   // @Input() authorBio: string = '';
 
-  constructor(
-    private articlesService: ArticleService,
-    private router: Router
-  ) {}
+  disabled = false;
+
+  constructor(private articleService: ArticleService, private router: Router) {}
 
   ngOnInit(): void {}
 
   deleteArticle() {
-    this.articlesService.deleteArticle(this.article.slug).subscribe((data) => {
-      console.log(data);
-      this.router.navigate(['/']);
+    this.articleService.deleteArticle(this.article.slug).subscribe((data) => {
+      this.getArticlesList();
+    });
+  }
+
+  editPost() {
+    this.router.navigate(['editarticle', this.article.slug]);
+  }
+
+  getArticlesList() {
+    this.articleService.getArticles().subscribe((result) => {
+      this.articles = result.articles;
     });
   }
 }

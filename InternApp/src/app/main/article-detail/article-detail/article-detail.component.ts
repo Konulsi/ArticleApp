@@ -10,6 +10,7 @@ import { ArticleService } from 'src/app/services/articles.service';
 })
 export class ArticleDetailComponent implements OnInit {
   article!: article;
+  disabled!: false;
 
   constructor(
     private articleService: ArticleService,
@@ -24,9 +25,10 @@ export class ArticleDetailComponent implements OnInit {
 
   getArticle(slug: article) {
     this.articleService.getArticleBySlug(slug).subscribe((articleData) => {
-      console.log(articleData);
-
       this.article = articleData.article;
     });
   }
+  editPost() {}
+
+  deleteArticle() {}
 }

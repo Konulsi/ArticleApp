@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
+  ArticleDto,
   Articles,
   NewArticle,
   article,
@@ -30,6 +31,10 @@ export class ArticleService {
   }
 
   deleteArticle(slug: string) {
-    return this.http.delete(this.baseUrl + Urls.ARTICLE + '/ ' + slug);
+    return this.http.delete(this.baseUrl + Urls.ARTICLE + '/' + slug);
+  }
+
+  putArticle(slug: article, dto: any) {
+    return this.http.put(this.baseUrl + Urls.ARTICLE + '/' + slug, dto);
   }
 }

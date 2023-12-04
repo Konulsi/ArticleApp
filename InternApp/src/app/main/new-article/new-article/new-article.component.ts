@@ -38,19 +38,18 @@ export class NewArticleComponent {
     });
   }
 
-  // openDialog(element: any, yesOrNo: any) {
-  //   const dialogRef = this.dialog.open(ArticleDialogComponent, {
-  //     //1ci hansi komponenti achiriq, ikincisi icherisine ne gonderirik yeni hansi datani
-  //     data: {
-  //       blog: element,
-  //       isUpdate: yesOrNo,
-  //     },
-  //   });
+  openDialog() {
+    const dialogRef = this.dialog.open(ArticleDialogComponent, {
+      //1ci hansi komponenti achiriq, ikincisi icherisine ne gonderirik yeni hansi datani
+    });
 
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     this.getArticlesList();
-  //   });
-  // }
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.create();
+        this.router.navigate(['/']);
+      }
+    });
+  }
 
   // getArticlesList() {
   //   this.articleService.getArticles().subscribe((result) => {
