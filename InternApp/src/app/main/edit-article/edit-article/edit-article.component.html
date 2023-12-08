@@ -1,18 +1,8 @@
-<div
-  style="
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 84.3vh;
-  "
->
-  <mat-card style="min-width: 30%">
+<div class="editArticle">
+  <mat-card class="matCard">
     <mat-card-content>
       <mat-card-title>Edit Article</mat-card-title>
-      <form
-        [formGroup]="editArticleForm"
-        style="display: flex; flex-direction: column"
-      >
+      <form [formGroup]="editArticleForm" class="editArticleForm">
         <mat-form-field>
           <mat-label>Title</mat-label>
           <input

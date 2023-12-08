@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs';
-import { Articles, article } from 'src/app/interfaces/article';
+import { article } from 'src/app/interfaces/article';
 import { ArticleService } from 'src/app/services/articles.service';
 
 @Component({
@@ -20,9 +18,7 @@ export class ArticleComponent implements OnInit {
   // @Input() authorUsername: string = '';
   // @Input() authorBio: string = '';
 
-  disabled = false;
-
-  constructor(private articleService: ArticleService, private router: Router) {}
+  constructor(private articleService: ArticleService) {}
 
   ngOnInit(): void {
     this.getArticlesList();

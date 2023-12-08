@@ -10,7 +10,6 @@ import { ArticleService } from 'src/app/services/articles.service';
 })
 export class ArticleDetailComponent implements OnInit {
   article!: article;
-  disabled!: false;
 
   constructor(
     private articleService: ArticleService,
@@ -20,6 +19,7 @@ export class ArticleDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(({ slug }) => {
+      //rout-dan paramsi goturub methoda gonderirik
       this.getArticle(slug);
     });
   }
@@ -29,7 +29,6 @@ export class ArticleDetailComponent implements OnInit {
       this.article = articleData.article;
     });
   }
-  editPost() {}
 
   deleteArticle() {
     this.articleService.deleteArticle(this.article.slug).subscribe((data) => {

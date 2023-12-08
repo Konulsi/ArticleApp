@@ -21,7 +21,6 @@ import { ArticleEditDialogComponent } from '../article-edit-dialog/article-edit-
   styleUrls: ['./edit-article.component.sass'],
 })
 export class EditArticleComponent implements OnInit {
-  // editArticleForm!: FormGroup;
   articles!: article[];
   article!: articleDto;
 
@@ -41,7 +40,7 @@ export class EditArticleComponent implements OnInit {
   });
 
   constructor(
-    private activatedRoute: ActivatedRoute, //params ile url e nese elave etdikde
+    private activatedRoute: ActivatedRoute,
     private route: Router,
     private articleService: ArticleService,
     public dialog: MatDialog
@@ -49,6 +48,7 @@ export class EditArticleComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(({ slug }) => {
+      //params ile url e nese elave etdikde
       this.slug = slug;
 
       this.articleService

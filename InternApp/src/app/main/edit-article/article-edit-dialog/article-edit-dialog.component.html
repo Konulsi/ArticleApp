@@ -1,37 +1,12 @@
-<div
-  class="mt-3"
-  style="
-    display: flex;
-    justify-content: space-evenly;
-    align-items: baseline;
-    height: 50px;
-  "
->
-  <h2 style="">Update the article?</h2>
+<div class="mt-3 edit-dialog-header">
+  <h2>Update the article?</h2>
 
-  <button
-    style="font-size: 30px; background-color: transparent; border: none"
-    (click)="closeIcon()"
-  >
-    x
-  </button>
+  <button class="closeBtn" (click)="closeIcon()">x</button>
 </div>
 
 <div>
-  <div
-    style="
-      width: 275px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-    "
-  >
-    <button
-      mat-raised-button
-      style="background-color: red; color: white"
-      (click)="dontUpdate()"
-    >
+  <div class="dialog-content">
+    <button class="dontUpdateBtn" mat-raised-button (click)="dontUpdate()">
       Don't update
     </button>
     <button mat-raised-button color="primary" (click)="update()">Update</button>

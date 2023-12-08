@@ -1,19 +1,8 @@
 <mat-card class="example-card my-5">
   <mat-card-header style="justify-content: space-between">
     <mat-card-title> {{ article?.title }}</mat-card-title>
-    <div
-      class="info-icon"
-      style="
-        margin: 8px;
-        font-size: 25px;
-        width: 110px;
-        display: flex;
-        justify-content: space-evenly;
-      "
-    >
-      <a
-        style="color: #fbd807d4"
-        [routerLink]="['/', 'articledetail', article?.slug]"
+    <div class="info-icons">
+      <a class="detailIcon" [routerLink]="['/', 'articledetail', article?.slug]"
         ><i
           matTooltip="Article detail"
           aria-label="Button that displays a tooltip when focused or hovered over"
@@ -23,20 +12,12 @@
       <a
         matTooltip="Article edit"
         aria-label="Button that displays a tooltip when focused or hovered over"
-        style="outline: none; border: none; color: #70cbd3"
         [routerLink]="['/', 'editarticle', article?.slug]"
-        class="follow"
+        class="follow editIcon"
       >
         <i class="fa-solid fa-pen-to-square"></i>
       </a>
-      <button
-        style="
-          outline: none;
-          border: none;
-          color: #ff0000c2;
-          background-color: transparent;
-        "
-      >
+      <button class="deleteIcon">
         <i
           matTooltip="Article delete"
           aria-label="Button that displays a tooltip when focused or hovered over"
@@ -48,16 +29,9 @@
   </mat-card-header>
 
   <mat-card-content>
-    <div
-      class="content-header my-2"
-      style="display: flex; justify-content: start; align-items: center"
-    >
-      <img
-        style="height: 50px; border-radius: 50%"
-        mat-card-image
-        [src]="article?.author?.image"
-      />
-      <h3 style="font-size: 20px; margin-left: 20px">
+    <div class="content-header my-2">
+      <img mat-card-image [src]="article?.author?.image" />
+      <h3>
         {{ article?.author?.username }}
       </h3>
     </div>
