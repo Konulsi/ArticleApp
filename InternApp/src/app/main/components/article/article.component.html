@@ -1,43 +1,47 @@
-<mat-card class="example-card my-5">
-  <mat-card-header style="justify-content: space-between">
-    <mat-card-title> {{ article?.title }}</mat-card-title>
-    <div class="info-icons">
-      <a class="detailIcon" [routerLink]="['/', 'articledetail', article?.slug]"
-        ><i
-          matTooltip="Article detail"
+<div>
+  <mat-card class="example-card my-5">
+    <mat-card-header style="justify-content: space-between">
+      <mat-card-title> {{ article?.title }}</mat-card-title>
+      <div class="info-icons">
+        <a
+          class="detailIcon"
+          [routerLink]="['/', 'articledetail', article?.slug]"
+          ><i
+            matTooltip="Article detail"
+            aria-label="Button that displays a tooltip when focused or hovered over"
+            class="fa-solid fa-circle-info"
+          ></i
+        ></a>
+        <a
+          matTooltip="Article edit"
           aria-label="Button that displays a tooltip when focused or hovered over"
-          class="fa-solid fa-circle-info"
-        ></i
-      ></a>
-      <a
-        matTooltip="Article edit"
-        aria-label="Button that displays a tooltip when focused or hovered over"
-        [routerLink]="['/', 'editarticle', article?.slug]"
-        class="follow editIcon"
-      >
-        <i class="fa-solid fa-pen-to-square"></i>
-      </a>
-      <button class="deleteIcon">
-        <i
-          matTooltip="Article delete"
-          aria-label="Button that displays a tooltip when focused or hovered over"
-          class="fa-solid fa-trash-can"
-          (click)="deleteArticle()"
-        ></i>
-      </button>
-    </div>
-  </mat-card-header>
+          [routerLink]="['/', 'editarticle', article?.slug]"
+          class="follow editIcon"
+        >
+          <i class="fa-solid fa-pen-to-square"></i>
+        </a>
+        <button class="deleteIcon">
+          <i
+            matTooltip="Article delete"
+            aria-label="Button that displays a tooltip when focused or hovered over"
+            class="fa-solid fa-trash-can"
+            (click)="openDialog()"
+          ></i>
+        </button>
+      </div>
+    </mat-card-header>
 
-  <mat-card-content>
-    <div class="content-header my-2">
-      <img mat-card-image [src]="article?.author?.image" />
-      <h3>
-        {{ article?.author?.username }}
-      </h3>
-    </div>
+    <mat-card-content>
+      <div class="content-header my-2">
+        <img mat-card-image [src]="article?.author?.image" />
+        <h3>
+          {{ article?.author?.username }}
+        </h3>
+      </div>
 
-    <p>
-      {{ article?.description }}
-    </p>
-  </mat-card-content>
-</mat-card>
+      <p>
+        {{ article?.description }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>

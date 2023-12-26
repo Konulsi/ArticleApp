@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-article-edit-dialog',
@@ -7,10 +7,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./article-edit-dialog.component.sass'],
 })
 export class ArticleEditDialogComponent {
-  constructor(
-    // @Inject(MAT_DIALOG_DATA) private data: any,
-    private dialogRef: MatDialogRef<ArticleEditDialogComponent>
-  ) {}
+  constructor(private dialogRef: MatDialogRef<ArticleEditDialogComponent>) {}
   update() {
     this.dialogRef.close(true);
   }

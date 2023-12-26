@@ -1,5 +1,9 @@
 <div class="container">
+  <div class="mat-elevation-z8"></div>
   <div *ngFor="let article of articles">
-    <app-article [article]="article"></app-article>
+    <app-article
+      (articlesList)="getUpdatedListArticle($event)"
+      [article]="article"
+    ></app-article>
   </div>
 </div>
